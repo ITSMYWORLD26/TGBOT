@@ -11,6 +11,7 @@ from playwright.async_api import async_playwright
 BOT_TOKEN       = "8885622806:AAEzNbdnJJWd5AGC6pC8LUBcOs2SRzKXlds" # Updated with new token
 CHANNEL_ID      = os.getenv("CHANNEL_ID", "-1004427004477")
 NEW_CHANNEL_ID  = os.getenv("NEW_CHANNEL_ID", "-1003250473765")
+PRIVATE_CHANNEL_ID = os.getenv("PRIVATE_CHANNEL_ID", "-1003956267456")
 ADMIN_ID        = int(os.getenv("ADMIN_ID", "8473160748"))
 PANEL_USER      = os.getenv("PANEL_USER", "5260101")
 PANEL_PASS      = os.getenv("PANEL_PASS", "Shoaibpanel@123!!!")
@@ -328,6 +329,7 @@ async def run_bot():
 
                                     await safe_send(bot_ref, CHANNEL_ID, message_text, reply_markup)
                                     await safe_send(bot_ref, NEW_CHANNEL_ID, message_text, reply_markup)
+                                    await safe_send(bot_ref, PRIVATE_CHANNEL_ID, message_text, reply_markup)
                                     print(f"✅ SENT: {masked} | {otp}", flush=True)
                                     # ----------------------------------
                     await page.go_back()
