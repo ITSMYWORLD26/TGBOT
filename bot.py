@@ -60,7 +60,7 @@ async def safe_send(bot, chat_id, text, reply_markup=None):
                 await bot.send_message(chat_id, text, parse_mode="Markdown", read_timeout=15, write_timeout=15)
             return True
         except Exception as e:
-            print(f"Send err: {e}")
+            print(f"Send err: {e} | TEXT: {repr(text)}")
             await asyncio.sleep(1)
     return False
 
