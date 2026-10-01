@@ -297,7 +297,8 @@ async def run_bot():
                                     # ----- PREMIUM FORMAT APLIYED -----
                                     flag, ccode = get_country(ph)
                                     clean_masked = escape_markdown(masked)
-                                    line1 = f"{flag} {ccode} \\| 🟢 {clean_masked} \\#EN"
+                                    clean_ccode = escape_markdown(ccode)
+                                    line1 = f"{flag} {clean_ccode} \\| 🟢 {clean_masked} \\#EN"
                                     
                                     clean_sender = escape_markdown(se)
                                     if otp and otp != "N/A":
