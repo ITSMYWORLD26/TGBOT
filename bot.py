@@ -6,7 +6,8 @@ from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, ContextTypes, CallbackQueryHandler
 
 # ========== CONFIG ==========
-BOT_TOKEN       = "8639806583:AAGykxJbrJalG-p55cxJvP8Ix2Ko-kHyQ2U"
+import os
+BOT_TOKEN       = os.getenv("BOT_TOKEN", "8639806583:AAHBP81e5g8Luf7jhJRwi1-t8hM7VKnn5AU")
 OTP_CHANNEL_ID  = -1003250473765
 OTP_GROUP_ID    = -1004427004477
 ADMIN_ID        = 8473160748
@@ -14,7 +15,7 @@ PANEL_USER      = "xyz@gmail.com"
 PANEL_PASS      = "Sanju@71"
 LOGIN_URL       = "https://livestatspanel.com/index.php"
 SMS_URL         = "https://livestatspanel.com/index.php?opt=shw_sms_tod&lang=EN"
-POLL_INTERVAL   = 12
+POLL_INTERVAL   = 2
 
 # 🔗 Inline button ke liye — apna channel username daal yahan
 CHANNEL_URL     = "https://t.me/allnumbersfree"
@@ -389,7 +390,6 @@ async def check_sms(app, page):
     global seen_messages
     try:
         await page.goto(SMS_URL, timeout=30000, wait_until="domcontentloaded")
-        await asyncio.sleep(3)
 
         # Cloudflare Bypass Logic
         try:
@@ -458,7 +458,6 @@ async def check_sms(app, page):
                 # 🔁 Only reload page if we clicked a row and navigated away previously
                 if i > 0 and page_needs_reload:
                     await page.goto(SMS_URL, timeout=30000, wait_until="domcontentloaded")
-                    await asyncio.sleep(3)
 
                     # Cloudflare Bypass Logic
                     try:
