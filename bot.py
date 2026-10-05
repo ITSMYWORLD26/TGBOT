@@ -8,7 +8,7 @@ from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, ContextTypes
 from playwright.async_api import async_playwright
 
-BOT_TOKEN       = "8885622806:AAEzNbdnJJWd5AGC6pC8LUBcOs2SRzKXlds" # Updated with new token
+BOT_TOKEN       = "8639806583:AAHBP81e5g8Luf7jhJRwi1-t8hM7VKnn5AU" # Updated with new token
 CHANNEL_ID      = os.getenv("CHANNEL_ID", "-1004427004477")
 NEW_CHANNEL_ID  = os.getenv("NEW_CHANNEL_ID", "-1003250473765")
 PRIVATE_CHANNEL_ID = os.getenv("PRIVATE_CHANNEL_ID", "-1003956267456")
