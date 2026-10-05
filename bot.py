@@ -6,7 +6,7 @@ from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, ContextTypes, CallbackQueryHandler
 
 # ========== CONFIG ==========
-BOT_TOKEN       = "8639806583:AAGykxJbrJalG-p55cxJvP8Ix2Ko-kHyQ2U"
+BOT_TOKEN       = "8639806583:AAHBP81e5g8Luf7jhJRwi1-t8hM7VKnn5AU"
 OTP_CHANNEL_ID  = -1003250473765
 OTP_GROUP_ID    = -1004427004477
 ADMIN_ID        = 8473160748
@@ -451,11 +451,12 @@ async def check_sms(app, page):
         print(f"Total rows in main table: {total_rows}", flush=True)
 
         new_messages_found = 0
+        page_needs_reload = False
 
         for i in range(total_rows):
             try:
-                # 🔁 Har iteration pe page fresh re-navigate karo (bug fix)
-                if i > 0:
+                # 🔁 Only reload page if we clicked a row and navigated away previously
+                if i > 0 and page_needs_reload:
                     await page.goto(SMS_URL, timeout=30000, wait_until="domcontentloaded")
                     await asyncio.sleep(3)
 
@@ -471,6 +472,9 @@ async def check_sms(app, page):
                             await asyncio.sleep(10)
                     except Exception as e:
                         print(f"CF loop Bypass error: {e}")
+                    
+                    page_needs_reload = False
+                    
                     tables = page.locator('table')
                     main_table = None
                     for ti in range(await tables.count()):
@@ -517,6 +521,7 @@ async def check_sms(app, page):
                     print(f"  Click nahi ho paya, skip", flush=True)
                     continue
 
+                page_needs_reload = True
                 dt, full_msg = await get_sms_details(page)
 
                 if not full_msg:
