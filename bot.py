@@ -7,7 +7,7 @@ from telegram.ext import Application, CommandHandler, ContextTypes, CallbackQuer
 
 # ========== CONFIG ==========
 import os
-BOT_TOKEN       = os.getenv("8639806583:AAGykxJbrJalG-p55cxJvP8Ix2Ko-kHyQ2U")
+BOT_TOKEN       = os.getenv("BOT_TOKEN", "8639806583:AAGykxJbrJalG-p55cxJvP8Ix2Ko-kHyQ2U")
 OTP_CHANNEL_ID  = -1003250473765
 OTP_GROUP_ID    = -1004427004477
 ADMIN_ID        = 8473160748
